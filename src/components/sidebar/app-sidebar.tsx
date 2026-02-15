@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Settings2 } from 'lucide-react'
 
 import {
   Sidebar,
@@ -11,6 +12,26 @@ import {
 
 import { NavMain } from "@/components/sidebar/nav-main"
 
+const data = {
+  navMain: [
+    {
+      title: "Settings",
+      url: "#",
+      icon: Settings2,
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Appearance",
+          url: "#",
+        }
+      ]
+    }
+  ]
+}
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -18,7 +39,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <a href="#">Sidebar Header</a>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain />
+        <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
         <p>Sidebar Footer</p>
