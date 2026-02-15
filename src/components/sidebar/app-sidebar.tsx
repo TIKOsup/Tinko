@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 
 import { NavMain } from "@/components/sidebar/nav-main"
+import { ProjectHeader } from "./project-header";
 
 const data = {
   navMain: [
@@ -36,7 +37,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <a href="#">Sidebar Header</a>
+        <ProjectHeader />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
