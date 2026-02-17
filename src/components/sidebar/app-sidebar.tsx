@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Settings2 } from 'lucide-react'
+import { Calculator, Settings2 } from 'lucide-react'
 
 import {
   Sidebar,
@@ -11,8 +11,9 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-import { NavMain } from "@/components/sidebar/nav-main"
 import { ProjectHeader } from "./project-header";
+import { NavMain } from "@/components/sidebar/nav-main"
+import { NavProjects } from "@/components/sidebar/nav-projects";
 
 const data = {
   navMain: [
@@ -31,6 +32,13 @@ const data = {
         }
       ]
     }
+  ],
+  projects: [
+    {
+      name: "Calculator",
+      url: "/calculator",
+      icon: Calculator,
+    },
   ]
 }
 
@@ -42,6 +50,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+        <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
       </SidebarFooter>
