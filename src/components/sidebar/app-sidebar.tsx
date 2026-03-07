@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Calculator, Settings2 } from 'lucide-react'
+import { Calculator, Settings2, FolderCode } from 'lucide-react'
 
 import {
   Sidebar,
@@ -39,6 +39,11 @@ const data = {
       url: "/calculator",
       icon: Calculator,
     },
+    {
+      name: "Doc",
+      url: "/doc",
+      icon: FolderCode,
+    }
   ]
 }
 
