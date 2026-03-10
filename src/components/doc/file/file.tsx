@@ -5,8 +5,11 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@/components/ui/sidebar'
+import { useParams } from "react-router-dom";
 
-export default function Doc() {
+export default function File() {
+  const { file } = useParams();
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -22,7 +25,9 @@ export default function Doc() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-            <h1 className="text-2xl font-medium">Documentation Home Page</h1>
+            <h1 className="text-2xl font-medium">Documentation</h1>
+            <Separator />
+            <h2>{file}</h2>
         </div>
       </SidebarInset>
     </SidebarProvider>

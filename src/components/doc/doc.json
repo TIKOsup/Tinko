@@ -1,0 +1,43 @@
+{
+  "file": "cardimp.p",
+  "description": "Сервис импорта пластиковых карт",
+  "procedures": [
+    {
+      "name": "CardImp",
+      "description": "Процедура импорта пластиковой карты",
+      "parameters": [
+        {
+          "name": "iCustId",
+          "type": "INT64",
+          "mode": "INPUT"
+        },
+        {
+          "name": "oErr",
+          "type": "CHARACTER",
+          "mode": "OUTPUT"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getExpireDate",
+      "description": "Получение даты истечения срока действия карты",
+      "parameters": [
+        {
+          "name": "iDateExpire",
+          "type": "CHARACTER",
+          "mode": "INPUT"
+        }
+      ],
+      "returns": "DATE"
+    }
+  ],
+  "variables": [
+    {
+      "name": "mTimeOut",
+      "type": "INT64",
+      "description": ""
+    }
+  ]
+}
