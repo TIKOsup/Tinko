@@ -1,0 +1,86 @@
+{
+  "name": "cardimp.p",
+  "description": "Сервис импорта пластиковых карт",
+  "procedures": [
+    {
+      "name": "CardImp",
+      "description": "Процедура импорта пластиковой карты",
+      "parameters": [
+        {
+          "name": "iCustId",
+          "type": "INT64",
+          "mode": "INPUT"
+        },
+        {
+          "name": "oErr",
+          "type": "CHARACTER",
+          "mode": "OUTPUT"
+        }
+      ]
+    },
+    {
+      "name": "VydClPlAuto",
+      "description": "Процедура автоматического списания карты с внебаланса",
+      "parameters": [
+        {
+          "name": "iCustId",
+          "type": "INT64",
+          "mode": "INPUT"
+        },
+        {
+          "name": "iCardType",
+          "type": "CHARACTER",
+          "mode": "INPUT"
+        },
+        {
+          "name": "oErr",
+          "type": "CHARACTER",
+          "mode": "OUTPUT"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getExpireDate",
+      "description": "Получение даты истечения срока действия карты",
+      "parameters": [
+        {
+          "name": "iDateExpire",
+          "type": "CHARACTER",
+          "mode": "INPUT"
+        }
+      ],
+      "returns": "DATE"
+    },
+    {
+      "name": "getDecryptedCardNum",
+      "description": "Получение дешифрованного номера карты",
+      "parameters": [
+        {
+          "name": "iEncryptedCardNum",
+          "type": "CHARACTER",
+          "mode": "INPUT"
+        }
+      ],
+      "returns": "CHARACTER"
+    }
+  ],
+  "variables": [
+    {
+      "name": "mTimeOut",
+      "type": "INT64",
+      "description": ""
+    },
+    {
+      "name": "mErrMes",
+      "type": "CHARACTER",
+      "description": "Текст ошибки"
+    },
+    {
+      "name": "mStatus",
+      "type": "INT64",
+      "description": "Статус выполнения процедуры"
+    }
+  ]
+}
