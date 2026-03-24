@@ -2,9 +2,13 @@ import { Separator } from '@/components/ui/separator'
 import Search from '@/components/search/search'
 import { useParams } from 'react-router-dom'
 import data from '@/data/doc.json'
+import { useTheme } from "@/components/theme-provider"
+import { Paintbrush } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function File() {
   const { file } = useParams()
+  const { theme, setTheme } = useTheme()
 
   if (data.name !== file) {
     return <h1 className="text-2xl">File not found</h1>
@@ -17,8 +21,16 @@ export default function File() {
           <div className="flex aspect-square size-10 items-center justify-center">
             <img src="/logo.png" alt="Project Logo" />
           </div>
-          <div className='ml-auto'>
+          <div className='ml-auto flex gap-4'>
             <Search />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              <Paintbrush className="h-[1.2rem] w-[1.2rem]" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
           </div>
         </div>
       </header>
@@ -63,7 +75,7 @@ export default function File() {
                         key={variable.name}
                         className='flex flex-col gap-1 min-w-0'
                       >
-                        <div className='rounded-md border bg-background bg-gray-50'>
+                        <div className='rounded-md border bg-card'>
                           <div className='border-b px-2 py-1 text-xs text-right'>
                             <a href="#" className='right-0 text-blue-500 hover:underline px-2'>
                               View Source
@@ -104,7 +116,7 @@ export default function File() {
                           </a>
                         </h3>
 
-                        <div className='rounded-md border bg-background bg-gray-50'>
+                        <div className='rounded-md border bg-background bg-card'>
                           <pre className='max-w-full overflow-x-auto px-4 py-3 text-sm leading-6 text-foreground'>
                             <code>
                               PROCEDURE{" "}
@@ -149,7 +161,7 @@ export default function File() {
                           </a>
                         </h3>
 
-                        <div className='rounded-md border bg-background bg-gray-50'>
+                        <div className='rounded-md border bg-background bg-card'>
                           <pre className='max-w-full overflow-x-auto px-4 py-3 text-sm leading-6 text-foreground'>
                             <code>
                               FUNCTION{" "}
