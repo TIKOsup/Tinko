@@ -11,6 +11,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
+  CommandShortcut
 } from "@/components/ui/command"
 import { apiItems, sourceItems, type SearchItem } from "@/data/search-data"
 
@@ -55,6 +56,7 @@ export default function Search() {
         className="w-64 justify-start rounded-lg text-left font-light tracking-tight"
       >
         Search documentation...
+        <CommandShortcut>/</CommandShortcut>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
