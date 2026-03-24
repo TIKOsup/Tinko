@@ -71,7 +71,9 @@ export default function File() {
                           </div>
                           <pre className='max-w-full overflow-x-auto px-4 py-3 text-sm leading-6 text-foreground'>
                             <code>
-                              {`DEFINE VARIABLE ${variable.name} AS ${variable.type}`}
+                              DEFINE VARIABLE{" "}
+                              <span className='italic'>{variable.name}</span>{" "}
+                              AS {variable.type}
                             </code>
                           </pre>
                         </div>
@@ -96,17 +98,27 @@ export default function File() {
                         className='flex flex-col gap-1 min-w-0'
                       >
                         <h3 className='text-base font-semibold text-foreground'>
-                          proc <a href="#" className='text-blue-500 hover:underline'>{procedure.name}</a>
+                          proc{" "}
+                          <a href="#" className='text-blue-500 hover:underline'>
+                            {procedure.name}
+                          </a>
                         </h3>
 
                         <div className='rounded-md border bg-background bg-gray-50'>
                           <pre className='max-w-full overflow-x-auto px-4 py-3 text-sm leading-6 text-foreground'>
                             <code>
-                              {`PROCEDURE ${procedure.name} (${procedure.parameters
-                                .map(
-                                  (param) => `${param.mode} ${param.name} ${param.type}`
-                                )
-                                .join(', ')})`}
+                              PROCEDURE{" "}
+                              <span className='italic'>{procedure.name}</span>{" "}
+                              (
+                              {procedure.parameters.map((param, index) => (
+                                <span key={`${procedure.name}-${param.name}-${index}`}>
+                                  {index > 0 ? ", " : ""}
+                                  {param.mode}{" "}
+                                  <span className='italic'>{param.name}</span>{" "}
+                                  {param.type}
+                                </span>
+                              ))}
+                              )
                             </code>
                           </pre>
                         </div>
@@ -131,17 +143,27 @@ export default function File() {
                         className='flex flex-col gap-1 min-w-0'
                       >
                         <h3 className='text-base font-semibold text-foreground'>
-                          func <a href="#" className='text-blue-500 hover:underline'>{fn.name}</a>
+                          func{" "}
+                          <a href="#" className='text-blue-500 hover:underline'>
+                            {fn.name}
+                          </a>
                         </h3>
 
                         <div className='rounded-md border bg-background bg-gray-50'>
                           <pre className='max-w-full overflow-x-auto px-4 py-3 text-sm leading-6 text-foreground'>
                             <code>
-                              {`FUNCTION ${fn.name} (${fn.parameters
-                                .map(
-                                  (param) => `${param.mode} ${param.name} ${param.type}`
-                                )
-                                .join(', ')}) RETURNS ${fn.returns}`}
+                              FUNCTION{" "}
+                              <span className='italic'>{fn.name}</span>{" "}
+                              (
+                              {fn.parameters.map((param, index) => (
+                                <span key={`${fn.name}-${param.name}-${index}`}>
+                                  {index > 0 ? ", " : ""}
+                                  {param.mode}{" "}
+                                  <span className='italic'>{param.name}</span>{" "}
+                                  {param.type}
+                                </span>
+                              ))}
+                              ) RETURNS {fn.returns}
                             </code>
                           </pre>
                         </div>
