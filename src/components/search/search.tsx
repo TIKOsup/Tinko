@@ -23,6 +23,23 @@ const KIND_LABEL: Record<SearchItem["kind"], string> = {
 export default function Search() {
   const [open, setOpen] = React.useState(false)
 
+  React.useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "/") return
+      const target = event.target as HTMLElement | null
+      const isInput =
+        target?.tagName === "INPUT" ||
+        target?.tagName === "TEXTAREA" ||
+        target?.isContentEditable
+      if (isInput) return
+      event.preventDefault()
+      setOpen(true)
+    }
+
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [])
+
   const handleSelect = React.useCallback((item: SearchItem) => {
     setOpen(false)
     // TODO: navigate/open item here (e.g. router push or file open)
@@ -35,7 +52,7 @@ export default function Search() {
         variant="outline"
         onClick={() => setOpen(true)}
         type="button"
-        className="w-fit"
+        className="w-64 justify-start rounded-lg text-left font-light tracking-tight"
       >
         Search documentation...
       </Button>
