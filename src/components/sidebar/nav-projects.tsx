@@ -1,9 +1,7 @@
 "use client"
 
-import {
-  Calculator,
-  type LucideIcon
-} from "lucide-react"
+import { type LucideIcon } from "lucide-react"
+import { Link } from "react-router-dom"
 
 import {
   SidebarGroup,
@@ -29,10 +27,10 @@ export function NavProjects({
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild tooltip={item.name}>
-              <a href={item.url}>
+              <Link to={item.url}>
                 <item.icon />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
